@@ -123,12 +123,12 @@ public class LzoInputStream extends InputStream {
 
     protected boolean readBlock() throws IOException {
         // logState("Before readBlock");
-        int outputBufferLength = readInt(true);
-        if (outputBufferLength == -1)
+        int inputBufferLength = readInt(true);
+        if (inputBufferLength == -1)
             return false;
-        setOutputBufferSize(outputBufferLength);
-        int inputBufferLength = readInt(false);
         setInputBufferSize(inputBufferLength);
+        int outputBufferLength = readInt(false);
+        setOutputBufferSize(outputBufferLength);
         readBytes(inputBuffer, 0, inputBufferLength);
         decompress(outputBufferLength, inputBufferLength);
         return true;

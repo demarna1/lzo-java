@@ -271,8 +271,8 @@ public class LzoOutputStream extends OutputStream {
 
     protected void writeBlock(@Nonnull byte[] inputData, @Nonnegative int inputPos, @Nonnegative int inputLen, @Nonnull byte[] outputData, @Nonnegative int outputPos, @Nonnegative int outputLen)
             throws IOException {
-        writeInt(inputLen);
         writeInt(outputLen);
+        writeInt(inputLen);
         out.write(outputData, outputPos, outputLen);
     }
 
